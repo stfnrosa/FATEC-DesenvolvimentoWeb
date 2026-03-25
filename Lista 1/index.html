@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Projeto JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Modelo cálculadora</h2>
+
+    <label>Digite o primeiro número:</label>
+    <input type="text" id="primeiroNumero">
+    <br>
+
+    <label>Digite o segundo número:</label>
+    <input type="text" id="segundoNumero">
+    <br>
+
+    <input type="button" value=" + " onclick="Somar()">
+    <input type="button" value=" - " onclick="Subtrair()">
+    <input type="button" value=" ÷ " onclick="Dividir()">
+    <input type="button" value=" x " onclick="Multiplicar()">
+    <input type="button" value=" xʸ " onclick="Exponenciacao()">
+    <input type="button" value=" % " onclick="Modulo()">
+
+
+
+    <!-- EXERCICIO 1 -->
+    <h2>Novo salário</h2>
+
+    <label>Salário:</label>
+    <input type="text" id="salario">
+
+    <label>Percentual:</label>
+    <input type="text" id="percentual">
+
+    <input type="button" value="Calcular" onclick="CalcularSalario()">
+
+    <p id="resultadoSalario"></p>
+
+
+
+    <!-- EXERCICIO 2 -->
+    <h2>Cálculo de área para triângulos</h2>
+
+    <label>Base:</label>
+    <input type="text" id="base">
+
+    <label>Altura:</label>
+    <input type="text" id="altura">
+
+    <input type="button" value="Calcular" onclick="CalcularAreaTriangulo()">
+
+    <input type="text" id="resultadoArea" readonly>
+
+
+
+    <!-- EXERCICIO 3 -->
+    <h2>Média ponderada</h2>
+
+    <input type="text" id="nota1">
+    <input type="text" id="nota2">
+
+    <input type="button" value="Calcular média" onclick="MediaPonderada()">
+
+    <label id="resultadoMedia"></label>
+
+
+
+    <!-- EXERCICIO 4 -->
+    <h2>Cálculo de idade</h2>
+
+    <input type="date" id="dataNascimento">
+
+    <input type="button" value="Calcular idade" onclick="CalcularIdade()">
+
+
+
+    <!-- EXERCICIO 5 -->
+    <h2>Consumo médio</h2>
+
+    <input type="text" id="distancia">
+    <input type="text" id="litros">
+
+    <input type="button" value="Calcular" onclick="ConsumoMedio()">
+
+    <p id="resultadoConsumo"></p>
+
+
+
+    <!-- EXERCICIO 6 -->
+    <h2>Salário funcionário</h2>
+
+    <input type="button" value="Calcular salário" onclick="CalcularFuncionario()">
+
+    <p id="resultadoFuncionario"></p>
+
+
+
+    <!-- EXERCICIO 7 -->
+    <h2>Gerador de número aleatório</h2>
+
+    <input type="button" value="Gerar número" onclick="EhPar()">
+
+
+
+<script>
+
+
+function Somar(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(n1 + n2);
+}
+
+function Subtrair(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(n1 - n2);
+}
+
+function Dividir(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(n1 / n2);
+}
+
+function Multiplicar(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(n1 * n2);
+}
+
+function Exponenciacao(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(Math.pow(n1, n2));
+}
+
+function Modulo(){
+    let n1 = Number(document.getElementById("primeiroNumero").value);
+    let n2 = Number(document.getElementById("segundoNumero").value);
+    alert(n1 % n2);
+}
+
+
+
+function CalcularSalario(){
+
+    let salario = Number(document.getElementById("salario").value);
+    let perc = Number(document.getElementById("percentual").value);
+
+    let novo = salario + (salario * perc / 100);
+
+    document.getElementById("resultadoSalario").innerText =
+        "Novo salário = " + novo;
+}
+
+
+
+function CalcularAreaTriangulo(){
+
+    let b = Number(document.getElementById("base").value);
+    let h = Number(document.getElementById("altura").value);
+
+    let area = (b * h) / 2;
+
+    document.getElementById("resultadoArea").value = area;
+}
+
+
+
+function MediaPonderada(){
+
+    let n1 = Number(document.getElementById("nota1").value);
+    let n2 = Number(document.getElementById("nota2").value);
+
+    let media = (n1 * 0.3) + (n2 * 0.7);
+
+    document.getElementById("resultadoMedia").innerText =
+        "Média = " + media;
+}
+
+
+
+function CalcularIdade(){
+
+let valor = document.getElementById("dataNascimento").value;
+
+if(valor == ""){
+    alert("Digite a data de nascimento");
+    return;
+}
+
+let nascimento = new Date(valor);
+
+let hoje = new Date();
+
+let anos = hoje.getFullYear() - nascimento.getFullYear();
+
+let meses = anos * 12;
+let dias = anos * 365;
+let horas = dias * 24;
+let minutos = horas * 60;
+let semanas = Math.floor(dias / 7);
+
+let idade2050 = 2050 - nascimento.getFullYear();
+
+
+console.log("Anos:", anos);
+console.log("Meses:", meses);
+console.log("Dias:", dias);
+console.log("Horas:", horas);
+console.log("Minutos:", minutos);
+console.log("Semanas:", semanas);
+console.log("Idade em 2050:", idade2050);
+
+
+alert(
+    "Anos: " + anos +
+    "\nMeses: " + meses +
+    "\nDias: " + dias +
+    "\nHoras: " + horas +
+    "\nMinutos: " + minutos +
+    "\nSemanas: " + semanas +
+    "\nIdade em 2050: " + idade2050
+);
+}
+
+
+
+function ConsumoMedio(){
+
+    let d = Number(document.getElementById("distancia").value);
+    let v = Number(document.getElementById("litros").value);
+
+    let cm = d / v;
+
+    document.getElementById("resultadoConsumo").innerText =
+        "Consumo = " + cm + " km/l";
+}
+
+
+
+function CalcularFuncionario(){
+
+    let horas = 62;
+    let valorHora = 10;
+
+    let bruto;
+
+    if (horas <= 40){
+        bruto = horas * valorHora;
+    } else {
+        let extra = horas - 40;
+        bruto = (40 * valorHora) + (extra * valorHora * 3);
+    }
+
+    let desconto = horas * 1.5;
+
+    let liquido = bruto - desconto;
+
+    document.getElementById("resultadoFuncionario").innerText =
+        "Bruto: " + bruto +
+        " Desconto: " + desconto +
+        " Líquido: " + liquido;
+}
+
+
+
+function EhPar(){
+
+    let n = parseInt(Math.random() * 100);
+
+    if (n % 2 == 0){
+        alert("Número " + n + " é par");
+    } else {
+        alert("Número " + n + " é impar");
+    }
+}
+
+</script>
+
+</body>
+</html>
